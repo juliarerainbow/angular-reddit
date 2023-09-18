@@ -1,18 +1,19 @@
-import { Component } from '@angular/core';
-import { DataService } from 'src/app/services/data.service';
+import { Component, OnInit } from '@angular/core';
+import { Post } from 'src/app/model/post';
+import { RedditService } from 'src/app/services/reddit.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.scss']
+  styleUrls: ['./main.component.scss'],
 })
-export class MainComponent {
-constructor(private dataServ:DataService){
+export class MainComponent implements OnInit{
+  posts:Post[]=[];
 
+  constructor(private reddit:RedditService, public storage: StorageService){}
 
-}
-// ngOnInit():void{
-//   console.log(this.dataServ.getPosts());
-// }
-
+  ngOnInit():void{
+    this.reddit.getRedditPosts().subscribe(childrenData => this.posts = childrenData);
+  }
 }

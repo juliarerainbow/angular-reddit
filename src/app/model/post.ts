@@ -1,8 +1,9 @@
 export interface Post {
     id:string;
     title:string;
-    created:number;
+    created:Date;
     author:string;
     url:string;
-    thumbnail?:string;
+    permalink:string;
+    thumbnail:string;
 }
