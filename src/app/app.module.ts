@@ -9,6 +9,7 @@ import { MainComponent } from './components/main/main.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { CardComponent } from './components/card/card.component';
 import { FavesComponent } from './components/faves/faves.component';
+import { TimestampToDatePipe } from './pipes/timestamp-to-date.pipe';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { FavesComponent } from './components/faves/faves.component';
     MainComponent,
     FooterComponent,
     CardComponent,
-    FavesComponent
+    FavesComponent,
+    TimestampToDatePipe
   ],
   imports: [
     BrowserModule,

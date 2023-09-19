@@ -5,7 +5,9 @@ import { FavesComponent } from './components/faves/faves.component';
 
 const routes: Routes = [
   {path:'home', component: MainComponent},
-  {path:'faves', component: FavesComponent}
+  {path:'faves', component: FavesComponent},
+  {path:'', redirectTo:'/home', pathMatch:'full'},
+  {path:'**', redirectTo:'/home'}
 ];
 
 @NgModule({
@@ -13,3 +15,6 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
+
+// liguria consulting 

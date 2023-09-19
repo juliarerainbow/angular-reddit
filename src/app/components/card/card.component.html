@@ -1,22 +1,33 @@
-<!-- <div class="card-container">
+<div *ngIf="postData" class="card-container" [ngStyle]="{backgrounColor: bColor}"> 
+    <!-- *ngIf="postData"  renderizza la card solo se c'è post -->
+    
     <div class="card-img">
-        <img src="{{post.thumbnail.includes('http')? post.thumbnail : './assets/images.jpg'}}"
+            <!-- *ngIf="isFave"  se l'input della card è vero (glielo passo dal suo parent) -->
+        <span *ngIf="isFave">☆</span>
+        <img src="{{postData.thumbnail.includes('http')? postData.thumbnail : './assets/images.jpg'}}"
             alt="post thumbnail">
     </div>
     <div class="card-body">
-        <span>{{post.title}}</span>
-        <span>{{post.author}}</span>
-        <span>{{post.created}}</span>
+        <span>{{postData.title | uppercase}}</span>
+        <span>{{postData.author}}</span>
+        <span>{{postData.created | timestampToDate : true | uppercase }}</span>
     </div>
     <div class="spacer"></div>
     <div class="card-action">
+        <!-- 
+            Non conviene utilizzare delle funzioni nell'html, conviene utilizzare il pipe. 
+            Il motivo per cui sarebbe meglio non farlo è perché 
+            ricreerebbe ad ogni cambiamento la view dell'elemento sovraccaricando la pagina. 
 
-        <button (click)="storage.toggleFaves(post)">Salva</button>
-        <a href="{{post.url}}" target="_blank" rel="noopener noreferrer">           
-            <button> --- </button>
+            favorisce così la versione più lazy della pagina.
+            
+            <button (click)="storage.toggleFaves(postData)">{{storage.isFave(postData)}}</button> -->
+        <button (click)="storage.toggleFaves(postData)">{{postData.isFave?'rimuovi':'salva'}}</button>
+        <a href="{{postData.url}}" target="_blank" rel="noopener noreferrer">           
+            <button>vai al link</button>
         </a>
-        <a href="{{'http://reddit.com/'+ post.permalink}}" target="_blank" rel="noopener noreferrer">
+        <a href="{{'http://reddit.com/'+ postData.permalink}}" target="_blank" rel="noopener noreferrer">
             <button>vai al link</button>
         </a>
     </div>
-</div> -->
+</div>

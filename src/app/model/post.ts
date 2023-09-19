@@ -1,9 +1,10 @@
 export interface Post {
     id:string;
     title:string;
-    created:Date;
+    created:number;
     author:string;
     url:string;
     permalink:string;
     thumbnail:string;
+    isFave?: boolean;
 }

@@ -1,26 +1,5 @@
 <ul>
     <li *ngFor="let post of posts">
-        <div class="card">
-            <div class="card-img">
-                <img src="{{post.thumbnail.includes('http')? post.thumbnail : './assets/images.jpg'}}"
-                    alt="post thumbnail">
-            </div>
-            <div class="card-body">
-                <span>{{post.title}}</span>
-                <span>{{post.author}}</span>
-                <span>{{post.created}}</span>
-            </div>
-            <div class="spacer"></div>
-            <div class="card-action">
-
-                <button (click)="storage.toggleFaves(post)">{{storage.isFave(post)?'rimuovi':'salva'}}</button>
-                <a href="{{post.url}}" target="_blank" rel="noopener noreferrer">           
-                    <button> --- </button>
-                </a>
-                <a href="{{'http://reddit.com/'+ post.permalink}}" target="_blank" rel="noopener noreferrer">
-                    <button>vai al link</button>
-                </a>
-            </div>
-        </div>
+        <app-card [postData]="post"></app-card>
     </li>
 </ul>

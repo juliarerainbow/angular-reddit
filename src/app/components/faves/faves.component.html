@@ -1,1 +1,7 @@
-<p>faves works!</p>
+
+<h1>PROVA</h1>
+<ul>
+    <li *ngFor="let post of favesArray">
+        <app-card [postData]="post" [isFave]="true" [bColor]="'green'"></app-card>
+    </li>
+</ul>

@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Post } from 'src/app/model/post';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-card',
@@ -6,5 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./card.component.scss']
 })
 export class CardComponent {
+
+  @Input() postData?: Post;
+  @Input() isFave:boolean = false;
+  @Input() bColor:string = 'crimson';
+  constructor(public storage: StorageService){
+
+  }
 
 }
